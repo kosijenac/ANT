@@ -1,4 +1,5 @@
 #include "util.h"
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -9,7 +10,8 @@ void print_scf(int* a, int n, int period)
     printf("[%d; ", a[0]);
     for (int i = 1; i < n - 1; i++)
         i == period ? printf("(%d, ", a[i]) : printf("%d, ", a[i]);
-    period == -1 ? printf("%d]\n", a[n - 1]) : printf("%d)]\n", a[n - 1]);
+    if (n > 0)
+        period == -1 ? printf("%d]\n", a[n - 1]) : printf("%d)]\n", a[n - 1]);
 }
 
 int check_period(int* s, int* t, int n)
@@ -24,7 +26,7 @@ int main(int argc, char* argv[])
 {
     if (argc != 4) {
         printf("Run as: %s <s0> <d> <t0>,\n", argv[0]);
-        printf("where the quadratic irrational is of the form (s0 + √d)/t0");
+        printf("where the quadratic irrational is of the form (s0 + √d)/t0\n");
         return -1;
     }
     int s0 = atoi(argv[1]), d = atoi(argv[2]), t0 = atoi(argv[3]);
@@ -34,10 +36,10 @@ int main(int argc, char* argv[])
     }
     int root = natRoot(d);
     if (root != -1) {
-        Euclid* e = euclid(s0 + root, t0);
+        Euclid e = euclid(s0 + root, t0);
         printf("Finite continued fraction: ");
-        print_scf(e->quot, e->n, -1);
-        destroy_euclid(e);
+        print_scf(e.quot, e.n, -1);
+        destroy_euclid(&e);
         return 0;
     }
     if ((d - sq(s0)) % t0) {

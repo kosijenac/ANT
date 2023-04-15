@@ -23,7 +23,7 @@ int isPrime(int p)
             return 0;
     return 1;
 }
-Euclid* euclid(int a, int b)
+Euclid euclid(int a, int b)
 {
     /* The theoretical upper bound on the number of steps in the worst-case scenario. */
     int upper = (int)(log(a * sqrt(5)) / log(phi)) - 1;
@@ -37,7 +37,7 @@ Euclid* euclid(int a, int b)
         a = b;
         b = data.rem[data.n++];
     }
-    return &data;
+    return data;
 }
 void destroy_euclid(Euclid* e)
 {
@@ -49,8 +49,8 @@ int gcd(int a, int b)
 {
     if (a < b)
         swap(&a, &b);
-    Euclid* e = euclid(a, b);
-    int ret = e->rem[e->n];
-    destroy_euclid(e);
+    Euclid e = euclid(a, b);
+    int ret = e.rem[e.n];
+    destroy_euclid(&e);
     return ret;
 }

@@ -1,3 +1,6 @@
+#ifndef __ANT_UTIL_H
+#define __ANT_UTIL_H
+
 #define phi 1.6180339887498948
 
 typedef struct _Euclid {
@@ -34,7 +37,7 @@ int isPrime(int);
  * @brief Runs Euclid's algorithm on the given inputs.
  * @return Euclid* - contains the quotients and remainders.
  */
-Euclid* euclid(int, int);
+Euclid euclid(int, int);
 /**
  * @brief Destroys the struct referenced bt the argument and frees its memory.
  */
@@ -43,3 +46,5 @@ void destroy_euclid(Euclid*);
  * @brief Finds the greatest common divisor of the two arguments.
  */
 int gcd(int, int);
+
+#endif
