@@ -24,12 +24,13 @@ int main(int argc, char* argv[])
         printf("Period length must be positive.\n");
         return -2;
     }
+    int a[PERIOD_LIMIT], s[PERIOD_LIMIT], t[PERIOD_LIMIT];
     while (!found) {
         if (natRoot(++d) != -1) {
             printf("Skipping %d (perfect square).\n", d);
             continue;
         }
-        int a[PERIOD_LIMIT], s[PERIOD_LIMIT], t[PERIOD_LIMIT], i = 0, period = -1;
+        int i = 0, period = -1;
         s[0] = 0;
         t[0] = 1;
         while (period == -1) {
