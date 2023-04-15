@@ -39,11 +39,18 @@ Euclid* euclid(int a, int b)
     }
     return &data;
 }
-int gcd_e(Euclid* data) { return data->rem[data->n]; }
+void destroy_euclid(Euclid* e)
+{
+    free(e->quot);
+    free(e->rem);
+    free(e);
+}
 int gcd(int a, int b)
 {
     if (a < b)
         swap(&a, &b);
     Euclid* e = euclid(a, b);
-    return gcd_e(e);
+    int ret = e->rem[e->n];
+    destroy_euclid(e);
+    return ret;
 }

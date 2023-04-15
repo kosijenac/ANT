@@ -36,6 +36,10 @@ int isPrime(int);
  */
 Euclid* euclid(int, int);
 /**
+ * @brief Destroys the struct referenced bt the argument and frees its memory.
+ */
+void destroy_euclid(Euclid*);
+/**
  * @brief Finds the greatest common divisor of the two arguments.
  */
 int gcd(int, int);
