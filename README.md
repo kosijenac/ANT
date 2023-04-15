@@ -10,7 +10,7 @@ square is also handled. The period of a continued fraction is represented using 
 ## Square PSCF
 The program `square_pscf.c` takes one command line argument, which is the length of a period that a
 continued fraction may have (any positive integer). The program then checks every non-perfect square 
-number $d$ to check if the period of $\sqrt(d)$ as a continued fraction matches the input, until it 
+number $d$ to check if the period of $\sqrt{d}$ as a continued fraction matches the input, until it 
 finds the smallest such number, at which point it halts the output.
 
 ### PERIOD_LIMIT
